@@ -1,0 +1,28 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px"
+     fxLayout="row" 
+     fxLayoutAlign="space-around center">
+
+      <form>
+          <mat-form-field>
+            <mat-select placeholder="HCI Type" [(ngModel)]="selectedValue" name="hci">
+              <mat-option *ngFor="let hci of hcitypes" [value]="hci.value">
+                {{hci.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </form>
+
+</div>    
+
+          <div >
+              <app-hybridhost [hidden] = "(selectedValue != 'Hybrid')"></app-hybridhost>
+          </div>
+
+          <div >
+              <app-allflashhost [hidden] = "(selectedValue != 'All Flash')"></app-allflashhost> 
+          </div>
+   
+  
+

@@ -1,0 +1,14 @@
+.mat-toolbar {
+    color: #F2F3F4;
+    fill-opacity: inherit;
+    background-color:#21618C;
+}
+
+p{
+    font-size: 8px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 30px;
+}

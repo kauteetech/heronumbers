@@ -1,0 +1,150 @@
+<div class="container"
+     fxLayout="column"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.gt-md="space-around center"
+     fxLayoutAlign="space-evenly center"
+     fxLayoutGap="10px" >
+
+  <mat-card>
+      <mat-card-title> 
+            Host Configuration
+      </mat-card-title>   
+
+          <mat-form-field class="example-margin">
+              <input matInput type="number" placeholder="Host Count" [(ngModel)]="hostCount" [min]="hostMin" [max]="hostMax" >
+          </mat-form-field>
+          
+
+          <mat-form-field class="example-margin">
+              <input matInput type="number" placeholder="Disk Group Count" [(ngModel)]="dgCount" [min]="diskGroupMin" [max]="diskGroupMax" >
+          </mat-form-field>
+
+          <mat-form-field class="example-margin">
+              <mat-select placeholder="Cache Drive Capacity in GB" >
+                <mat-option *ngFor="let cachedrive of cachedrivesize" [value]="cachedrive.value">
+                  {{cachedrive.viewValue}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>    
+            
+          <mat-form-field class="example-margin">    
+              <mat-select placeholder="Cache Drive IOPS" >
+                  <mat-option *ngFor="let cacheiops of cachedriveiops" [value]="cacheiops.value">
+                    {{cacheiops.viewValue}}
+                  </mat-option>
+                </mat-select>
+
+          </mat-form-field>
+          
+
+          <mat-form-field class="example-margin">
+              <input matInput type="number" placeholder="Capacity Disk Count" [(ngModel)]="diskCount" [min]="disksMin" [max]="disksMax" >
+          </mat-form-field>
+          
+
+          <mat-form-field class="example-margin">
+              <mat-select placeholder="Capacity Drive Type" >
+                <mat-option *ngFor="let drivespeed of hybriddrivetype" [value]="drivespeed.value">
+                  {{drivespeed.viewValue}}
+                </mat-option>
+              </mat-select>
+          </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+          <mat-card-title> 
+              VM Profile
+          </mat-card-title>
+
+              <mat-form-field class="example-margin" (change)="readIOPS()">
+                  <input matInput type="number" placeholder="VM Count" [(ngModel)]="vmCount" [min]="vmMin" [max]="vmMax" >
+              </mat-form-field>
+             
+              <mat-form-field class="example-margin">
+                  <input matInput type="number" placeholder="VM Size in GB" [(ngModel)]="vmSize" [min]="vmSizeMin" [max]="vmSizeMax" >
+              </mat-form-field>
+          
+              <mat-form-field class="example-margin" (change)="readIOPS()">
+                  <input matInput type="number" placeholder="IOPS per VM" [(ngModel)]="iopsperVM" [min]="iopsVmMin" [max]="iopsVmMax" >
+              </mat-form-field>
+           
+          
+              <mat-form-field class="example-margin">
+                  <mat-select placeholder="Block Size">
+                    <mat-option *ngFor="let block of blockSize" [value]="block.value">
+                      {{block.viewValue}}
+                    </mat-option>
+                  </mat-select>
+              </mat-form-field>
+            
+
+              <mat-form-field class="example-margin">
+                  <input matInput type="number" placeholder="Number of Stripes" [(ngModel)]="stripes" [min]="stripeMin" [max]="stripeMax">
+              </mat-form-field>
+
+          
+              <mat-form-field class="example-margin">
+                  <mat-select placeholder="Read Write Ratio">
+                    <mat-option *ngFor="let rwratio of readWrite" [value]="rwratio.value">
+                      {{rwratio.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          
+
+              <mat-form-field class="example-margin">
+                  <input matInput type="number" placeholder="Active Data Set in %" [(ngModel)]="activeDataSet" [min]="activeDataSetMin" [max]="activeDataSetMax" >
+              </mat-form-field>
+            
+
+              <mat-form-field class="example-margin">
+                  <mat-select placeholder="FTT Value">
+                    <mat-option *ngFor="let ftt of fttValue" [value]="ftt.value">
+                      {{ftt.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+         
+  </mat-card>
+
+        <div    fxLayout="row" 
+                fxLayoutAlign="space-evenly center"
+                fxLayout.sm="column"
+                fxLayout.xs="column"
+                fxLayoutAlign.gt-md="space-around center">
+
+                <mat-card class="example-margin workload" > 
+                    <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                        Total Read IOPS - Workload
+                    </mat-card-title>
+                        <ngx-gauge 
+                            [size]="gaugeSize"
+                            [type]="gaugeType" 
+                            [cap]="gaugeTailShape"
+                            [foregroundColor]="gaugeForeGround"
+                            [backgroundColor]="gaugeBackGround"
+                            [value]="gaugeValue"
+                            [max]="guageMax"
+                            [label]="gaugeLabel" 
+                            [thick]="25" 
+                            [append]="gaugeAppendText" >
+                        </ngx-gauge>
+
+                        <mat-card-content>
+                                <p>
+                                  The Shiba Inu is the <br>
+                                  smallest of the six original <br>
+                                  and distinct spitz breeds of dog from Japan.<br>
+                                  A small, agile dog that copes very well with <br>
+                                  mountainous terrain, the Shiba Inu was originally<br>
+                                  bred for hunting.<br>
+                                </p>
+                        </mat-card-content>    
+                </mat-card>
+
+        </div> 
+
+</div>
+
+  
