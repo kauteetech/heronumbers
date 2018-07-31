@@ -19,7 +19,8 @@ export class ReadynodeComponent implements OnInit {
 
   hcitypes: HCI[] = [
     {value: 'Hybrid', viewValue: 'Hybrid'},
-    {value: 'All Flash', viewValue: 'All Flash'}
+    {value: 'All Flash', viewValue: 'All Flash'},
+    {value: 'Advanced', viewValue: 'Advanced (All Flash)'}
   ];
 
 

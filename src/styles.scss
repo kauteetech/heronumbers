@@ -42,7 +42,7 @@ body {
   }
   
   .example-margin {
-    margin: 10px;
+    margin: 5px;
     align-content: center;
     align-items: center;
     text-align: center;
@@ -53,7 +53,10 @@ body {
   .mat-card {
     border-collapse:collapse;
     background-size: cover;
-      
+  }
+
+  .mat-card-title {
+    font-size: 20px;
   }
 
 

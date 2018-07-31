@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
 import { NgxGaugeModule } from 'ngx-gauge';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { WorkloadprofileComponent } from './workloadprofile/workloadprofile.component';
@@ -26,6 +27,7 @@ import { ResultService } from './services/result.service';
 import { WorkloadprofileService } from './services/workloadprofile.service';
 import { HybridhostComponent } from './hybridhost/hybridhost.component';
 import { AllflashhostComponent } from './allflashhost/allflashhost.component';
+import { AdvancedComponent } from './advanced/advanced.component';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { AllflashhostComponent } from './allflashhost/allflashhost.component';
     ReadynodeComponent,
     HybridhostComponent,
     AllflashhostComponent,
+    AdvancedComponent,
 
   ],
   imports: [
@@ -48,7 +51,8 @@ import { AllflashhostComponent } from './allflashhost/allflashhost.component';
     MatSelectModule,
     MatCardModule,
     FlexLayoutModule,
-    NgxGaugeModule
+    NgxGaugeModule,
+    ChartsModule
   ],
   providers: [
     HostconfigService,

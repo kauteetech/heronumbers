@@ -12,16 +12,23 @@
       </mat-card-title>   
 
           <mat-form-field class="example-margin">
-              <input matInput type="number" placeholder="Host Count" [(ngModel)]="hostCount" [min]="hostMin" [max]="hostMax" >
-          </mat-form-field>
+                <mat-select placeholder="Hosts Count" [(ngModel)]="hostCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                  <mat-option *ngFor="let hostcount of selecthostcount" [value]="hostcount.value">
+                    {{hostcount.viewValue}}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field> 
           
+          <mat-form-field class="example-margin">
+                <mat-select placeholder="Disk Group Count" [(ngModel)]="dgCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                  <mat-option *ngFor="let diskgroup of selectdgcount" [value]="diskgroup.value">
+                    {{diskgroup.viewValue}}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field> 
 
           <mat-form-field class="example-margin">
-              <input matInput type="number" placeholder="Disk Group Count" [(ngModel)]="dgCount" [min]="diskGroupMin" [max]="diskGroupMax" >
-          </mat-form-field>
-
-          <mat-form-field class="example-margin">
-              <mat-select placeholder="Cache Drive Capacity in GB" >
+              <mat-select placeholder="Cache Drive Capacity in GB" [(ngModel)]="CacheCapacity"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
                 <mat-option *ngFor="let cachedrive of cachedrivesize" [value]="cachedrive.value">
                   {{cachedrive.viewValue}}
                 </mat-option>
@@ -29,7 +36,7 @@
           </mat-form-field>    
             
           <mat-form-field class="example-margin">    
-              <mat-select placeholder="Cache Drive IOPS" >
+              <mat-select placeholder="Cache Drive IOPS" [(ngModel)]="cacheIOPSvalue"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
                   <mat-option *ngFor="let cacheiops of cachedriveiops" [value]="cacheiops.value">
                     {{cacheiops.viewValue}}
                   </mat-option>
@@ -37,14 +44,17 @@
 
           </mat-form-field>
           
-
           <mat-form-field class="example-margin">
-              <input matInput type="number" placeholder="Capacity Disk Count" [(ngModel)]="diskCount" [min]="disksMin" [max]="disksMax" >
-          </mat-form-field>
+                <mat-select placeholder="Capacity Disk Count" [(ngModel)]="capacitydiskCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                  <mat-option *ngFor="let diskcount of selectcapdiskcount" [value]="diskcount.value">
+                    {{diskcount.viewValue}}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field> 
           
 
           <mat-form-field class="example-margin">
-              <mat-select placeholder="Capacity Drive Type" >
+              <mat-select placeholder="Capacity Drive Type" [(ngModel)]="capcityDiskIOPSvalue"  (ngModelChange)= "vmHeroNumbers(); checkBalance() "  >
                 <mat-option *ngFor="let drivespeed of hybriddrivetype" [value]="drivespeed.value">
                   {{drivespeed.viewValue}}
                 </mat-option>
@@ -57,49 +67,55 @@
               VM Profile
           </mat-card-title>
 
-              <mat-form-field class="example-margin" (change)="readIOPS()">
+              <mat-form-field class="example-margin" (change)="vmHeroNumbers(); checkBalance()">
                   <input matInput type="number" placeholder="VM Count" [(ngModel)]="vmCount" [min]="vmMin" [max]="vmMax" >
               </mat-form-field>
              
-              <mat-form-field class="example-margin">
-                  <input matInput type="number" placeholder="VM Size in GB" [(ngModel)]="vmSize" [min]="vmSizeMin" [max]="vmSizeMax" >
+              <mat-form-field class="example-margin" (change)="vmHeroNumbers();checkBalance()">
+                  <input matInput type="number" placeholder="VM Size in GB" [(ngModel)]="vmSize">
               </mat-form-field>
           
-              <mat-form-field class="example-margin" (change)="readIOPS()">
-                  <input matInput type="number" placeholder="IOPS per VM" [(ngModel)]="iopsperVM" [min]="iopsVmMin" [max]="iopsVmMax" >
+              <mat-form-field class="example-margin" (change)="vmHeroNumbers(); checkBalance()">
+                  <input matInput type="number" placeholder="IOPS per VM" [(ngModel)]="iopsperVM" >
               </mat-form-field>
            
           
               <mat-form-field class="example-margin">
-                  <mat-select placeholder="Block Size">
+                  <mat-select placeholder="Block Size" [(ngModel)]="blockSizevalue"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
                     <mat-option *ngFor="let block of blockSize" [value]="block.value">
                       {{block.viewValue}}
                     </mat-option>
                   </mat-select>
               </mat-form-field>
             
-
               <mat-form-field class="example-margin">
-                  <input matInput type="number" placeholder="Number of Stripes" [(ngModel)]="stripes" [min]="stripeMin" [max]="stripeMax">
+                    <mat-select placeholder="Number of Stripes" [(ngModel)]="stripes"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
+                      <mat-option *ngFor="let stripe of selectstripecount" [value]="stripe.value">
+                        {{stripe.viewValue}}
+                      </mat-option>
+                    </mat-select>
               </mat-form-field>
 
           
-              <mat-form-field class="example-margin">
-                  <mat-select placeholder="Read Write Ratio">
+              <mat-form-field class="example-margin" >
+                  <mat-select placeholder="Read Write Ratio" [(ngModel)]="rwratiovalue"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
                     <mat-option *ngFor="let rwratio of readWrite" [value]="rwratio.value">
                       {{rwratio.viewValue}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
           
-
               <mat-form-field class="example-margin">
-                  <input matInput type="number" placeholder="Active Data Set in %" [(ngModel)]="activeDataSet" [min]="activeDataSetMin" [max]="activeDataSetMax" >
+                    <mat-select placeholder="Working Set in %" [(ngModel)]="activeDataSet"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
+                      <mat-option *ngFor="let ws of selectworkingset" [value]="ws.value">
+                        {{ws.viewValue}}
+                      </mat-option>
+                    </mat-select>
               </mat-form-field>
             
 
-              <mat-form-field class="example-margin">
-                  <mat-select placeholder="FTT Value">
+              <mat-form-field class="example-margin" >
+                  <mat-select placeholder="FTT Value" [(ngModel)]="fttvalue" (ngModelChange)="vmHeroNumbers(); checkBalance()"  >
                     <mat-option *ngFor="let ftt of fttValue" [value]="ftt.value">
                       {{ftt.viewValue}}
                     </mat-option>
@@ -124,27 +140,120 @@
                             [cap]="gaugeTailShape"
                             [foregroundColor]="gaugeForeGround"
                             [backgroundColor]="gaugeBackGround"
-                            [value]="gaugeValue"
+                            [value]="readValue"
                             [max]="guageMax"
-                            [label]="gaugeLabel" 
-                            [thick]="25" 
+                            [label]="readgaugeLabel" 
+                            [thick]="20" 
                             [append]="gaugeAppendText" >
                         </ngx-gauge>
-
-                        <mat-card-content>
-                                <p>
-                                  The Shiba Inu is the <br>
-                                  smallest of the six original <br>
-                                  and distinct spitz breeds of dog from Japan.<br>
-                                  A small, agile dog that copes very well with <br>
-                                  mountainous terrain, the Shiba Inu was originally<br>
-                                  bred for hunting.<br>
-                                </p>
-                        </mat-card-content>    
                 </mat-card>
 
+                <mat-card class="example-margin workload" > 
+                        <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                            Total Write IOPS - Workload
+                        </mat-card-title>
+                            <ngx-gauge 
+                                [size]="gaugeSize"
+                                [type]="gaugeType" 
+                                [cap]="gaugeTailShape"
+                                [foregroundColor]="gaugeForeGround"
+                                [backgroundColor]="gaugeBackGround"
+                                [value]="writeValue"
+                                [max]="guageMax"
+                                [label]="writegaugeLabel" 
+                                [thick]="20" 
+                                [append]="gaugeAppendText" >
+                            </ngx-gauge>
+                     </mat-card>
+
+
+                    <mat-card class="example-margin workload" > 
+                            <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                                Total IOPS (R + W) w/ Penalty
+                            </mat-card-title>
+                                <ngx-gauge 
+                                    [size]="gaugeSize"
+                                    [type]="gaugeType" 
+                                    [cap]="gaugeTailShape"
+                                    [foregroundColor]="gaugeForeGround"
+                                    [backgroundColor]="gaugeBackGround"
+                                    [value]="totalIOPS"
+                                    [max]="guageMax"
+                                    [label]="totalgaugeLabel" 
+                                    [thick]="20" 
+                                    [append]="gaugeAppendText" >
+                                </ngx-gauge>
+
+
+                                <mat-card style = "
+                                                font-size: 20px; 
+                                                font-weight: bold; 
+                                                background-color: #BDC3C7;
+                                                padding: 15px; 
+                                                "> 
+                                  Actual workload IOPS is : &nbsp; {{ readValue + writeValue }}
+                                </mat-card>
+
+                    </mat-card>
+
+                    <mat-card class="example-margin hostcache"> 
+                            <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                              <p style="font-size: 20px;"> Total Host IOPS :  {{ hostTotalIOPS }} </p> 
+                            </mat-card-title>
+                                <ngx-gauge 
+                                    [size]="gaugeSize"
+                                    [type]="gaugeType" 
+                                    [cap]="gaugeTailShape"
+                                    [foregroundColor]="gaugeForeGround"
+                                    [backgroundColor]="gaugeBackGround"
+                                    [value]="totalIOPS"
+                                    [max]="hostTotalIOPS"
+                                    [label]="totalHostgaugeLabel" 
+                                    [thick]="20" 
+                                    [append]="gaugeAppendText" >
+                                </ngx-gauge>
+
+                                <mat-card *ngIf="iopswarning"
+                                           style = "
+                                                font-size: 20px; 
+                                                font-weight: bold;
+                                                color: #BDC3C7; 
+                                                background-color:#C0392B  ;
+                                                padding: 15px; 
+                                                ">  
+                                           {{ iopsWarnMessage }} 
+                                </mat-card>
+                                
+                    </mat-card>
+
+
+                    <mat-card class="example-margin hostcache" > 
+                            <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                                <p style="font-size: 20px;"> Total Host Cache : {{ totalCacheCapacity }}  GB </p>
+                            </mat-card-title>
+                                <ngx-gauge 
+                                    [size]="gaugeSize"
+                                    [type]="gaugeType" 
+                                    [cap]="gaugeTailShape"
+                                    [foregroundColor]="gaugeForeGround"
+                                    [backgroundColor]="gaugeBackGround"
+                                    [value]="workingSet"
+                                    [max]="totalCacheCapacity"
+                                    [label]="totalHostcacheLabel" 
+                                    [thick]="20" 
+                                    [append]="gaugeAppendText" >
+                                </ngx-gauge>
+                                <mat-card  *ngIf="cachewarning"
+                                            style = "
+                                                font-size: 20px; 
+                                                font-weight: bold; 
+                                                color: #BDC3C7;
+                                                background-color: #C0392B;
+                                                padding: 15px; 
+                                                ">  
+                                            {{ cacheWarnMessage }} 
+                                </mat-card>
+                    </mat-card>
         </div> 
-
+       
 </div>
-
-  
