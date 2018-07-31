@@ -350,7 +350,7 @@ selectworkingset: SelectWorkingSetCount [] = [
   checkBalance() {
     if ( this.totalIOPS > this.hostTotalIOPS) {
         this.iopswarning = true;
-        this.iopsWarnMessage = " Warning : Required more Host IOPS"
+        this.iopsWarnMessage = " Warning : Require more Host IOPS"
         }
         else {
           this.iopsWarnMessage = "" 
@@ -359,7 +359,7 @@ selectworkingset: SelectWorkingSetCount [] = [
     
     if ( this.workingSet > this.totalCacheCapacity )    {
         this.cachewarning = true;
-        this.cacheWarnMessage = " Warning :  Required more Host Cache";
+        this.cacheWarnMessage = " Warning :  Require more Host Cache";
         }
         else {
           this.cacheWarnMessage ="";

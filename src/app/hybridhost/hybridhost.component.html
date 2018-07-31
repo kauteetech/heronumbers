@@ -191,7 +191,7 @@
                                                 background-color: #BDC3C7;
                                                 padding: 15px; 
                                                 "> 
-                                  Actual workload IOPS is : &nbsp; {{ readValue + writeValue }}
+                                  Actual workload IOPS : &nbsp; {{ readValue + writeValue }}
                                 </mat-card>
 
                     </mat-card>
@@ -223,6 +223,16 @@
                                                 ">  
                                            {{ iopsWarnMessage }} 
                                 </mat-card>
+
+                                <mat-card  *ngIf="!iopswarning"
+                                style = "
+                                      font-size: 20px; 
+                                      font-weight: bold; 
+                                      background-color: #17A589;
+                                      padding: 15px;
+                                    ">  
+                              Remaining IOPS :   {{ hostTotalIOPS - totalIOPS  }} 
+                    </mat-card>
                                 
                     </mat-card>
 
@@ -252,6 +262,16 @@
                                                 padding: 15px; 
                                                 ">  
                                             {{ cacheWarnMessage }} 
+                                </mat-card>
+
+                                <mat-card  *ngIf="!cachewarning"
+                                            style = "
+                                                  font-size: 20px; 
+                                                  font-weight: bold; 
+                                                  background-color: #17A589;
+                                                  padding: 15px;
+                                                ">  
+                                          Remaining Cache in GB :   {{ totalCacheCapacity - workingSet  }} 
                                 </mat-card>
                     </mat-card>
         </div> 

@@ -6,254 +6,273 @@
      fxLayoutAlign="space-evenly center"
      fxLayoutGap="10px" >
 
-  <mat-card>
-      <mat-card-title> 
-            Host Configuration
-      </mat-card-title>   
+            <mat-card>
+                <mat-card-title> 
+                      Host Configuration
+                </mat-card-title>   
 
-      <mat-form-field class="example-margin">
-          <mat-select placeholder="Hosts Count" [(ngModel)]="hostCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
-            <mat-option *ngFor="let hostcount of selecthostcount" [value]="hostcount.value">
-              {{hostcount.viewValue}}
-            </mat-option>
-          </mat-select>
-     </mat-form-field> 
-    
-          <mat-form-field class="example-margin">
-                <mat-select placeholder="Disk Group Count" [(ngModel)]="dgCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
-                  <mat-option *ngFor="let diskgroup of selectdgcount" [value]="diskgroup.value">
-                    {{diskgroup.viewValue}}
-                  </mat-option>
-                </mat-select>
-          </mat-form-field> 
+                <mat-form-field class="example-margin">
+                    <mat-select placeholder="Hosts Count" [(ngModel)]="hostCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                      <mat-option *ngFor="let hostcount of selecthostcount" [value]="hostcount.value">
+                        {{hostcount.viewValue}}
+                      </mat-option>
+                    </mat-select>
+              </mat-form-field> 
+              
+                    <mat-form-field class="example-margin">
+                          <mat-select placeholder="Disk Group Count" [(ngModel)]="dgCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                            <mat-option *ngFor="let diskgroup of selectdgcount" [value]="diskgroup.value">
+                              {{diskgroup.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field> 
 
-          <mat-form-field class="example-margin">
-              <mat-select placeholder="Cache Drive Capacity in GB" [(ngModel)]="CacheCapacity"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
-                <mat-option *ngFor="let cachedrive of cachedrivesize" [value]="cachedrive.value">
-                  {{cachedrive.viewValue}}
-                </mat-option>
-              </mat-select>
-          </mat-form-field>    
-            
-          <mat-form-field class="example-margin">    
-              <mat-select placeholder="Cache Drive IOPS" [(ngModel)]="cacheIOPSvalue"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
-                  <mat-option *ngFor="let cacheiops of cachedriveiops" [value]="cacheiops.value">
-                    {{cacheiops.viewValue}}
-                  </mat-option>
-                </mat-select>
+                    <mat-form-field class="example-margin">
+                        <mat-select placeholder="Cache Drive Capacity in GB" [(ngModel)]="CacheCapacity"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                          <mat-option *ngFor="let cachedrive of cachedrivesize" [value]="cachedrive.value">
+                            {{cachedrive.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>    
+                      
+                    <mat-form-field class="example-margin">    
+                        <mat-select placeholder="Cache Drive IOPS" [(ngModel)]="cacheIOPSvalue"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                            <mat-option *ngFor="let cacheiops of cachedriveiops" [value]="cacheiops.value">
+                              {{cacheiops.viewValue}}
+                            </mat-option>
+                          </mat-select>
 
-          </mat-form-field>
-          
-          <mat-form-field class="example-margin">
-                <mat-select placeholder="Capacity Disk Count" [(ngModel)]="capacitydiskCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
-                  <mat-option *ngFor="let diskcount of selectcapdiskcount" [value]="diskcount.value">
-                    {{diskcount.viewValue}}
-                  </mat-option>
-                </mat-select>
-          </mat-form-field> 
-          
+                    </mat-form-field>
+                    
+                    <mat-form-field class="example-margin">
+                          <mat-select placeholder="Capacity Disk Count" [(ngModel)]="capacitydiskCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                            <mat-option *ngFor="let diskcount of selectcapdiskcount" [value]="diskcount.value">
+                              {{diskcount.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                    </mat-form-field> 
+                    
 
-          <mat-form-field class="example-margin">
-              <mat-select placeholder="Capacity Drive IOPS" [(ngModel)]="capcityDiskIOPSvalue"  (ngModelChange)= "vmHeroNumbers(); checkBalance() "  >
-                <mat-option *ngFor="let drivespeed of hybriddrivetype" [value]="drivespeed.value">
-                  {{drivespeed.viewValue}}
-                </mat-option>
-              </mat-select>
-          </mat-form-field>
-  </mat-card>
+                    <mat-form-field class="example-margin">
+                        <mat-select placeholder="Capacity Drive IOPS" [(ngModel)]="capcityDiskIOPSvalue"  (ngModelChange)= "vmHeroNumbers(); checkBalance() "  >
+                          <mat-option *ngFor="let drivespeed of hybriddrivetype" [value]="drivespeed.value">
+                            {{drivespeed.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+            </mat-card>
 
-  <mat-card>
-          <mat-card-title> 
-              VM Profile
-          </mat-card-title>
+            <mat-card>
+                    <mat-card-title> 
+                        VM Profile
+                    </mat-card-title>
 
-              <mat-form-field class="example-margin" (change)="vmHeroNumbers(); checkBalance()">
-                  <input matInput type="number" placeholder="VM Count" [(ngModel)]="vmCount" [min]="vmMin" [max]="vmMax" >
-              </mat-form-field>
-             
-              <mat-form-field class="example-margin" (change)="vmHeroNumbers();checkBalance()">
-                  <input matInput type="number" placeholder="VM Size in GB" [(ngModel)]="vmSize" >
-              </mat-form-field>
-          
-              <mat-form-field class="example-margin" (change)="vmHeroNumbers(); checkBalance()">
-                  <input matInput type="number" placeholder="IOPS per VM" [(ngModel)]="iopsperVM" >
-              </mat-form-field>
-           
-          
-              <mat-form-field class="example-margin">
-                  <mat-select placeholder="Block Size" [(ngModel)]="blockSizevalue"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
-                    <mat-option *ngFor="let block of blockSize" [value]="block.value">
-                      {{block.viewValue}}
-                    </mat-option>
-                  </mat-select>
-              </mat-form-field>
-            
-              <mat-form-field class="example-margin">
-                  <mat-select placeholder="Number of Stripes" [(ngModel)]="stripes"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
-                    <mat-option *ngFor="let stripe of selectstripecount" [value]="stripe.value">
-                      {{stripe.viewValue}}
-                    </mat-option>
-                  </mat-select>
-            </mat-form-field>
+                        <mat-form-field class="example-margin" (change)="vmHeroNumbers(); checkBalance()">
+                            <input matInput type="number" placeholder="VM Count" [(ngModel)]="vmCount" [min]="vmMin" [max]="vmMax" >
+                        </mat-form-field>
+                      
+                        <mat-form-field class="example-margin" (change)="vmHeroNumbers();checkBalance()">
+                            <input matInput type="number" placeholder="VM Size in GB" [(ngModel)]="vmSize" >
+                        </mat-form-field>
+                    
+                        <mat-form-field class="example-margin" (change)="vmHeroNumbers(); checkBalance()">
+                            <input matInput type="number" placeholder="IOPS per VM" [(ngModel)]="iopsperVM" >
+                        </mat-form-field>
+                    
+                    
+                        <mat-form-field class="example-margin">
+                            <mat-select placeholder="Block Size" [(ngModel)]="blockSizevalue"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
+                              <mat-option *ngFor="let block of blockSize" [value]="block.value">
+                                {{block.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                      
+                        <mat-form-field class="example-margin">
+                            <mat-select placeholder="Number of Stripes" [(ngModel)]="stripes"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
+                              <mat-option *ngFor="let stripe of selectstripecount" [value]="stripe.value">
+                                {{stripe.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                      </mat-form-field>
 
-        
-            <mat-form-field class="example-margin" >
-                <mat-select placeholder="Read Write Ratio" [(ngModel)]="rwratiovalue"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
-                  <mat-option *ngFor="let rwratio of readWrite" [value]="rwratio.value">
-                    {{rwratio.viewValue}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-        
-            <mat-form-field class="example-margin">
-                  <mat-select placeholder="Working Set in %" [(ngModel)]="activeDataSet"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
-                    <mat-option *ngFor="let ws of selectworkingset" [value]="ws.value">
-                      {{ws.viewValue}}
-                    </mat-option>
-                  </mat-select>
-            </mat-form-field>
-
-              <mat-form-field class="example-margin" >
-                  <mat-select placeholder="FTT Value" [(ngModel)]="fttvalue" (ngModelChange)="vmHeroNumbers(); checkBalance()"  >
-                    <mat-option *ngFor="let ftt of fttValue" [value]="ftt.value">
-                      {{ftt.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-         
-  </mat-card>
-
-  <div    fxLayout="row" 
-  fxLayoutAlign="space-evenly center"
-  fxLayout.sm="column"
-  fxLayout.xs="column"
-  fxLayoutAlign.gt-md="space-around center">
-
-  <mat-card class="example-margin workload" > 
-      <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
-          Total Read IOPS - Workload
-      </mat-card-title>
-          <ngx-gauge 
-              [size]="gaugeSize"
-              [type]="gaugeType" 
-              [cap]="gaugeTailShape"
-              [foregroundColor]="gaugeForeGround"
-              [backgroundColor]="gaugeBackGround"
-              [value]="readValue"
-              [max]="guageMax"
-              [label]="readgaugeLabel" 
-              [thick]="20" 
-              [append]="gaugeAppendText" >
-          </ngx-gauge>
-  </mat-card>
-
-  <mat-card class="example-margin workload" > 
-          <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
-              Total Write IOPS - Workload
-          </mat-card-title>
-              <ngx-gauge 
-                  [size]="gaugeSize"
-                  [type]="gaugeType" 
-                  [cap]="gaugeTailShape"
-                  [foregroundColor]="gaugeForeGround"
-                  [backgroundColor]="gaugeBackGround"
-                  [value]="writeValue"
-                  [max]="guageMax"
-                  [label]="writegaugeLabel" 
-                  [thick]="20" 
-                  [append]="gaugeAppendText" >
-              </ngx-gauge>
-       </mat-card>
-
-
-      <mat-card class="example-margin workload" > 
-              <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
-                  Total IOPS (R + W) w/ Penalty
-              </mat-card-title>
-                  <ngx-gauge 
-                      [size]="gaugeSize"
-                      [type]="gaugeType" 
-                      [cap]="gaugeTailShape"
-                      [foregroundColor]="gaugeForeGround"
-                      [backgroundColor]="gaugeBackGround"
-                      [value]="totalIOPS"
-                      [max]="guageMax"
-                      [label]="totalgaugeLabel" 
-                      [thick]="20" 
-                      [append]="gaugeAppendText" >
-                  </ngx-gauge>
-
-
-                  <mat-card style = "
-                                  font-size: 20px; 
-                                  font-weight: bold; 
-                                  background-color: #BDC3C7;
-                                  padding: 15px; 
-                                  "> 
-                    Actual workload IOPS is : &nbsp; {{ readValue + writeValue }}
-                  </mat-card>
-
-      </mat-card>
-
-      <mat-card class="example-margin hostcache"> 
-              <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
-                <p style="font-size: 20px;"> Total Host IOPS :  {{ hostTotalIOPS }} </p> 
-              </mat-card-title>
-                  <ngx-gauge 
-                      [size]="gaugeSize"
-                      [type]="gaugeType" 
-                      [cap]="gaugeTailShape"
-                      [foregroundColor]="gaugeForeGround"
-                      [backgroundColor]="gaugeBackGround"
-                      [value]="totalIOPS"
-                      [max]="hostTotalIOPS"
-                      [label]="totalHostgaugeLabel" 
-                      [thick]="20" 
-                      [append]="gaugeAppendText" >
-                  </ngx-gauge>
-
-                  <mat-card *ngIf="iopswarning"
-                             style = "
-                                  font-size: 20px; 
-                                  font-weight: bold;
-                                  color: #BDC3C7; 
-                                  background-color:#C0392B  ;
-                                  padding: 15px; 
-                                  ">  
-                             {{ iopsWarnMessage }} 
-                  </mat-card>
                   
-      </mat-card>
+                      <mat-form-field class="example-margin" >
+                          <mat-select placeholder="Read Write Ratio" [(ngModel)]="rwratiovalue"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
+                            <mat-option *ngFor="let rwratio of readWrite" [value]="rwratio.value">
+                              {{rwratio.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  
+                      <mat-form-field class="example-margin">
+                            <mat-select placeholder="Working Set in %" [(ngModel)]="activeDataSet"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
+                              <mat-option *ngFor="let ws of selectworkingset" [value]="ws.value">
+                                {{ws.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                      </mat-form-field>
+
+                        <mat-form-field class="example-margin" >
+                            <mat-select placeholder="FTT Value" [(ngModel)]="fttvalue" (ngModelChange)="vmHeroNumbers(); checkBalance()"  >
+                              <mat-option *ngFor="let ftt of fttValue" [value]="ftt.value">
+                                {{ftt.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                  
+                </mat-card>
+
+                <div    fxLayout="row" 
+                fxLayoutAlign="space-evenly center"
+                fxLayout.sm="column"
+                fxLayout.xs="column"
+                fxLayoutAlign.gt-md="space-around center">
+
+                <mat-card class="example-margin workload" > 
+                    <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                        Total Read IOPS - Workload
+                    </mat-card-title>
+                        <ngx-gauge 
+                            [size]="gaugeSize"
+                            [type]="gaugeType" 
+                            [cap]="gaugeTailShape"
+                            [foregroundColor]="gaugeForeGround"
+                            [backgroundColor]="gaugeBackGround"
+                            [value]="readValue"
+                            [max]="guageMax"
+                            [label]="readgaugeLabel" 
+                            [thick]="20" 
+                            [append]="gaugeAppendText" >
+                        </ngx-gauge>
+                </mat-card>
+
+                <mat-card class="example-margin workload" > 
+                        <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                            Total Write IOPS - Workload
+                        </mat-card-title>
+                            <ngx-gauge 
+                                [size]="gaugeSize"
+                                [type]="gaugeType" 
+                                [cap]="gaugeTailShape"
+                                [foregroundColor]="gaugeForeGround"
+                                [backgroundColor]="gaugeBackGround"
+                                [value]="writeValue"
+                                [max]="guageMax"
+                                [label]="writegaugeLabel" 
+                                [thick]="20" 
+                                [append]="gaugeAppendText" >
+                            </ngx-gauge>
+                    </mat-card>
 
 
-      <mat-card class="example-margin hostcache" > 
-              <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
-                  <p style="font-size: 20px;"> Total Host Cache : {{ totalCacheCapacity }}  GB </p>
-              </mat-card-title>
-                  <ngx-gauge 
-                      [size]="gaugeSize"
-                      [type]="gaugeType" 
-                      [cap]="gaugeTailShape"
-                      [foregroundColor]="gaugeForeGround"
-                      [backgroundColor]="gaugeBackGround"
-                      [value]="workingSet"
-                      [max]="totalCacheCapacity"
-                      [label]="totalHostcacheLabel" 
-                      [thick]="20" 
-                      [append]="gaugeAppendText" >
-                  </ngx-gauge>
+                    <mat-card class="example-margin workload" > 
+                            <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                                Total IOPS (R + W) w/ Penalty
+                            </mat-card-title>
+                                <ngx-gauge 
+                                    [size]="gaugeSize"
+                                    [type]="gaugeType" 
+                                    [cap]="gaugeTailShape"
+                                    [foregroundColor]="gaugeForeGround"
+                                    [backgroundColor]="gaugeBackGround"
+                                    [value]="totalIOPS"
+                                    [max]="guageMax"
+                                    [label]="totalgaugeLabel" 
+                                    [thick]="20" 
+                                    [append]="gaugeAppendText" >
+                                </ngx-gauge>
 
-                  <mat-card  *ngIf="cachewarning"
-                              style = "
+
+                                <mat-card style = "
+                                                font-size: 20px; 
+                                                font-weight: bold; 
+                                                background-color: #BDC3C7;
+                                                padding: 15px; 
+                                                "> 
+                                  Actual workload IOPS is : &nbsp; {{ readValue + writeValue }}
+                                </mat-card>
+
+                    </mat-card>
+
+                    <mat-card class="example-margin hostcache"> 
+                      <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                        <p style="font-size: 20px;"> Total Host IOPS :  {{ hostTotalIOPS }} </p> 
+                      </mat-card-title>
+                          <ngx-gauge 
+                              [size]="gaugeSize"
+                              [type]="gaugeType" 
+                              [cap]="gaugeTailShape"
+                              [foregroundColor]="gaugeForeGround"
+                              [backgroundColor]="gaugeBackGround"
+                              [value]="totalIOPS"
+                              [max]="hostTotalIOPS"
+                              [label]="totalHostgaugeLabel" 
+                              [thick]="20" 
+                              [append]="gaugeAppendText" >
+                          </ngx-gauge>
+
+                          <mat-card *ngIf="iopswarning"
+                                    style = "
+                                          font-size: 20px; 
+                                          font-weight: bold;
+                                          color: #BDC3C7; 
+                                          background-color:#C0392B  ;
+                                          padding: 15px; 
+                                          ">  
+                                    {{ iopsWarnMessage }} 
+                          </mat-card>
+
+                          <mat-card  *ngIf="!iopswarning"
+                          style = "
                                 font-size: 20px; 
                                 font-weight: bold; 
-                                color: #BDC3C7;
-                                background-color: #C0392B;
-                                padding: 15px; 
-                                ">  
-                  {{ cacheWarnMessage }} 
-                  </mat-card>
-      </mat-card>
+                                background-color: #17A589;
+                                padding: 15px;
+                              ">  
+                        Remaining IOPS :   {{ hostTotalIOPS - totalIOPS  }} 
+              </mat-card>
+                          
+              </mat-card>
+
+
+              <mat-card class="example-margin hostcache" > 
+                      <mat-card-title fxLayoutAlign="center center" class="example-margin"> 
+                          <p style="font-size: 20px;"> Total Host Cache : {{ totalCacheCapacity }}  GB </p>
+                      </mat-card-title>
+                          <ngx-gauge 
+                              [size]="gaugeSize"
+                              [type]="gaugeType" 
+                              [cap]="gaugeTailShape"
+                              [foregroundColor]="gaugeForeGround"
+                              [backgroundColor]="gaugeBackGround"
+                              [value]="workingSet"
+                              [max]="totalCacheCapacity"
+                              [label]="totalHostcacheLabel" 
+                              [thick]="20" 
+                              [append]="gaugeAppendText" >
+                          </ngx-gauge>
+                          <mat-card  *ngIf="cachewarning"
+                                      style = "
+                                          font-size: 20px; 
+                                          font-weight: bold; 
+                                          color: #BDC3C7;
+                                          background-color: #C0392B;
+                                          padding: 15px; 
+                                          ">  
+                                      {{ cacheWarnMessage }} 
+                          </mat-card>
+
+                          <mat-card  *ngIf="!cachewarning"
+                                      style = "
+                                            font-size: 20px; 
+                                            font-weight: bold; 
+                                            background-color: #17A589;
+                                            padding: 15px;
+                                          ">  
+                                    Remaining Cache in GB :   {{ totalCacheCapacity - workingSet  }} 
+                          </mat-card>
+              </mat-card>
 </div> 
        
 </div>
