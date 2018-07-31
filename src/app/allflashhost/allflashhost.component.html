@@ -242,15 +242,16 @@
                       [thick]="20" 
                       [append]="gaugeAppendText" >
                   </ngx-gauge>
+
                   <mat-card  *ngIf="cachewarning"
                               style = "
-                                  font-size: 20px; 
-                                  font-weight: bold; 
-                                  color: #BDC3C7;
-                                  background-color: #C0392B;
-                                  padding: 15px; 
-                                  ">  
-                              {{ cacheWarnMessage }} 
+                                font-size: 20px; 
+                                font-weight: bold; 
+                                color: #BDC3C7;
+                                background-color: #C0392B;
+                                padding: 15px; 
+                                ">  
+                  {{ cacheWarnMessage }} 
                   </mat-card>
       </mat-card>
 </div> 

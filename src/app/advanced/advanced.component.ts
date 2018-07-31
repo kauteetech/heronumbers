@@ -358,6 +358,7 @@ checkBalance() {
       }
       else {
         this.iopsWarnMessage = "" 
+        this.iopswarning = false;
       }
   
   if ( this.workingSet > this.totalCacheCapacity )    {
@@ -366,6 +367,7 @@ checkBalance() {
       }
       else {
         this.cacheWarnMessage ="";
+        this.cachewarning = false;
       }
 } 
   

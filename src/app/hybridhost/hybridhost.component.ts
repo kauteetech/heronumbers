@@ -354,6 +354,7 @@ selectworkingset: SelectWorkingSetCount [] = [
         }
         else {
           this.iopsWarnMessage = "" 
+          this.iopswarning = false;
         }
     
     if ( this.workingSet > this.totalCacheCapacity )    {
@@ -362,6 +363,7 @@ selectworkingset: SelectWorkingSetCount [] = [
         }
         else {
           this.cacheWarnMessage ="";
+          this.cachewarning = false;
         }
   } 
     
