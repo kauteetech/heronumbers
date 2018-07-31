@@ -17,14 +17,10 @@ import { NgxGaugeModule } from 'ngx-gauge';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
-import { WorkloadprofileComponent } from './workloadprofile/workloadprofile.component';
-import { ResultComponent } from './result/result.component';
+
 import { ReadynodeComponent } from './readynode/readynode.component';
 
-import { HostconfigService } from './services/hostconfig.service';
-import { ReadynodeService } from './services/readynode.service';
-import { ResultService } from './services/result.service';
-import { WorkloadprofileService } from './services/workloadprofile.service';
+
 import { HybridhostComponent } from './hybridhost/hybridhost.component';
 import { AllflashhostComponent } from './allflashhost/allflashhost.component';
 import { AdvancedComponent } from './advanced/advanced.component';
@@ -33,8 +29,6 @@ import { AdvancedComponent } from './advanced/advanced.component';
 @NgModule({
   declarations: [
     AppComponent,
-    WorkloadprofileComponent,
-    ResultComponent,
     ReadynodeComponent,
     HybridhostComponent,
     AllflashhostComponent,
@@ -55,10 +49,7 @@ import { AdvancedComponent } from './advanced/advanced.component';
     ChartsModule
   ],
   providers: [
-    HostconfigService,
-    ReadynodeService,
-    ResultService,
-    WorkloadprofileService
+
   ],
   bootstrap: [AppComponent]
 })
