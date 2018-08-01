@@ -98,7 +98,7 @@
 
                   
                       <mat-form-field class="example-margin" >
-                          <mat-select placeholder="Read Write Ratio" [(ngModel)]="rwratiovalue"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
+                          <mat-select placeholder="Read Write Ratio" [(ngModel)]="rwratiovalue"  (ngModelChange)="vmHeroNumbers(); checkBalance(); resetactive() " >
                             <mat-option *ngFor="let rwratio of readWrite" [value]="rwratio.value">
                               {{rwratio.viewValue}}
                             </mat-option>
@@ -106,7 +106,7 @@
                         </mat-form-field>
                   
                       <mat-form-field class="example-margin">
-                            <mat-select placeholder="Working Set in %" [(ngModel)]="activeDataSet"  (ngModelChange)="vmHeroNumbers(); checkBalance()" >
+                            <mat-select placeholder="Working Set in %" [(ngModel)]="activeDataSet"  (ngModelChange)="vmHeroNumbers(); checkBalance(); resetactive() " >
                               <mat-option *ngFor="let ws of selectworkingset" [value]="ws.value">
                                 {{ws.viewValue}}
                               </mat-option>

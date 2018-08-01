@@ -370,15 +370,15 @@ selectworkingset: SelectWorkingSetCount [] = [
         this.cacheWarnMessage ="";
         this.cachewarning = false;
       }
-
-   if ( this.rwratiovalue == 100 ) {
-        this.activeDataSet = 0;
-       }
-       else {
-         return this.rwratiovalue;
-       }   
-} 
    
+} 
+
+  resetactive() {
+    if ( this.rwratiovalue >= 100 ) {
+            this.workingSet = 0 ;
+        } 
+    }
+      
  vmHeroNumbers() {
 
    this.checkBalance();
