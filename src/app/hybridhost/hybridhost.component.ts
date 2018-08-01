@@ -121,6 +121,7 @@ export class HybridhostComponent implements OnInit {
   iopsperVM: number = 10;
   iopsVmMin: number = 10;
   activeDataSet:number = 2;
+  readtoggle: number = 100;
 
   blockSizevalue: number = 4;
   rwratiovalue: number = 70;
@@ -389,9 +390,12 @@ selectworkingset: SelectWorkingSetCount [] = [
  
 
   /// Start Cache Workings
-
+    
     this.totalCacheCapacity = ( this.CacheCapacity * this.hostCount * this.dgCount );
     this.usableCapacity = ( this.vmSize * this.vmCount );
+
+
+
     this.workingSet = ( this.usableCapacity * (this.activeDataSet/100 ));
     this.cacheBalance = (this.totalCacheCapacity - this.workingSet)
     

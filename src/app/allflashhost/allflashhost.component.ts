@@ -105,7 +105,7 @@ export class AllflashhostComponent implements OnInit {
  cacheBalance:number = 0;
  workingSet: number = 0;
  usableCapacity: number;
-
+ readtoggle: number = 100;
 
  /// VM variables
  vmMin: number = 6;
@@ -370,6 +370,13 @@ selectworkingset: SelectWorkingSetCount [] = [
         this.cacheWarnMessage ="";
         this.cachewarning = false;
       }
+
+   if ( this.rwratiovalue == 100 ) {
+        this.activeDataSet = 0;
+       }
+       else {
+         return this.rwratiovalue;
+       }   
 } 
    
  vmHeroNumbers() {
@@ -397,7 +404,7 @@ selectworkingset: SelectWorkingSetCount [] = [
 
    this.totalCacheCapacity = ( this.CacheCapacity * this.hostCount * this.dgCount );
    this.usableCapacity = ( this.vmSize * this.vmCount );
-   this.workingSet = ( this.usableCapacity * (((100 - this.rwratiovalue) * this.activeDataSet)/100 ));
+   this.workingSet = ( this.usableCapacity * (this.activeDataSet)/100);
    this.cacheBalance = (this.totalCacheCapacity - this.workingSet)
    
  /// End Cache Workings

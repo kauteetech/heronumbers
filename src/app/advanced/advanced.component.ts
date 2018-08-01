@@ -369,6 +369,12 @@ checkBalance() {
         this.cacheWarnMessage ="";
         this.cachewarning = false;
       }
+  if ( this.rwratiovalue == 100 ) {
+        this.activeDataSet = 0;
+      }
+      else {
+        return this.rwratiovalue;
+      }     
 } 
   
 vmHeroNumbers() {
@@ -396,7 +402,8 @@ vmHeroNumbers() {
 
   this.totalCacheCapacity = ( this.CacheCapacity * this.hostCount * this.dgCount );
   this.usableCapacity = ( this.vmSize * this.vmCount );
-  this.workingSet = ( this.usableCapacity * (((100 - this.rwratiovalue) * this.activeDataSet)/100 ));
+ // this.workingSet = ( this.usableCapacity * (((100 - this.rwratiovalue) * this.activeDataSet)/100 ));
+  this.workingSet = ( this.usableCapacity * (this.activeDataSet)/100 );
   this.cacheBalance = (this.totalCacheCapacity - this.workingSet)
 
 /// End Cache Workings
