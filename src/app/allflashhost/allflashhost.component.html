@@ -45,7 +45,7 @@
                     </mat-form-field>
                     
                     <mat-form-field class="example-margin">
-                          <mat-select placeholder="Capacity Disk Count" [(ngModel)]="capacitydiskCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
+                          <mat-select placeholder="Capacity Disks per Disk Group" [(ngModel)]="capacitydiskCount"  (ngModelChange)= "vmHeroNumbers(); checkBalance()">
                             <mat-option *ngFor="let diskcount of selectcapdiskcount" [value]="diskcount.value">
                               {{diskcount.viewValue}}
                             </mat-option>
