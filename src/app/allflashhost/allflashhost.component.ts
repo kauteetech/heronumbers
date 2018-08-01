@@ -397,7 +397,7 @@ selectworkingset: SelectWorkingSetCount [] = [
 
    this.totalCacheCapacity = ( this.CacheCapacity * this.hostCount * this.dgCount );
    this.usableCapacity = ( this.vmSize * this.vmCount );
-   this.workingSet = ( this.usableCapacity * (this.activeDataSet/100 ));
+   this.workingSet = ( this.usableCapacity * (((100 - this.rwratiovalue) * this.activeDataSet)/100 ));
    this.cacheBalance = (this.totalCacheCapacity - this.workingSet)
    
  /// End Cache Workings
@@ -406,10 +406,10 @@ selectworkingset: SelectWorkingSetCount [] = [
  /// Start Console outputs
 
    console.log( "The Total Capacity is  : " + this.totalCacheCapacity ); 
-   console.log( "The Usable Capacity is  : " +this.usableCapacity ); 
-   console.log( "The Working Set is  : " +this.workingSet ); 
-   console.log( "The VMs Total IOPS is  : " +this.totalIOPS ); 
-   console.log( "The Hosts Total IOPS  : " +this.hostTotalIOPS ); 
+   console.log( "The Usable Capacity is  : " + this.usableCapacity ); 
+   console.log( "The Working Set is  : " + this.workingSet ); 
+   console.log( "The VMs Total IOPS is  : " + this.totalIOPS ); 
+   console.log( "The Hosts Total IOPS  : " + this.hostTotalIOPS ); 
    console.log ( " ********************* ******************** ")
             
 
