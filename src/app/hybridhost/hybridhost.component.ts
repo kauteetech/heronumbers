@@ -384,7 +384,7 @@ selectworkingset: SelectWorkingSetCount [] = [
 
   /// Start - Host IOPS
 
-    this.hostTotalIOPS = (this.hostCount * this.dgCount * this.cacheIOPSvalue ) + ( this.capacitydiskCount * this.capcityDiskIOPSvalue );
+    this.hostTotalIOPS = (this.hostCount * this.dgCount * this.cacheIOPSvalue ) + ( this.hostCount * this.dgCount * this.capacitydiskCount * this.capcityDiskIOPSvalue );
     
   //// End - Host IOPS
  
